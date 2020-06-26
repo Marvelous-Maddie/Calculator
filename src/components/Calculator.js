@@ -9,16 +9,31 @@ document
 
 export default () => {
   const [screen, updateScreen] = useState("");
+  const [history, addToHistory] = useState([]);
+  const [result, setResult] = useState();
 
   const handleClick = event => {
     updateScreen(screen + event.currentTarget.innerHTML);
+  };
+
+  const clickClear = event => {
+    updateScreen("");
+    addToHistory([]);
+  };
+
+  const clickEqual = () => {
+    const res = eval(screen);
+    setResult(res);
+    updateScreen(res);
   };
 
   return (
     <div className="calculator">
       <div id="calculator">
         <div className="top">
-          <span className="clear">C</span>
+          <span className="clear" onClick={clickClear}>
+            C
+          </span>
           <div className="screen">{screen}</div>
         </div>
         <div className="keys">
@@ -42,9 +57,11 @@ export default () => {
           </span>
           <span onClick={handleClick}>0</span>
           <span onClick={handleClick}>.</span>
-          <span className="eval">=</span>
+          <span className="eval" onClick={clickEqual}>
+            =
+          </span>
           <span className="operator" onClick={handleClick}>
-            x
+            *
           </span>
         </div>
       </div>
