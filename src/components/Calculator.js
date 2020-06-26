@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import "../styles/calculator.css";
 
-/*
-document
-  .querySelector("#calculator .clear")
-  .addEventListener("click", () => (calculatorScreen.innerHTML = ""));
-  */
-
 export default () => {
   const [screen, updateScreen] = useState("");
   const [history, addToHistory] = useState([]);
