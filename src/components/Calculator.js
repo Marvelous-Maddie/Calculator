@@ -19,6 +19,7 @@ export default () => {
     const res = eval(screen);
     setResult(res);
     updateScreen(res);
+    //addToHistory(...history, res);
   };
 
   return (
